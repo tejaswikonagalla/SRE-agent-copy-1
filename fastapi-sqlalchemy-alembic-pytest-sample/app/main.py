@@ -3,8 +3,8 @@ from typing import List
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 
-from .dependencies import get_database
-from .models import Book
+from dependencies import get_database
+from models import Book
 
 from pydantic import BaseModel, Field
 

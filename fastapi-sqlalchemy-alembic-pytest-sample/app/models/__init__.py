@@ -1,1 +1,3 @@
-from .book import Book
+```python
+from app.models.book import Book
+```

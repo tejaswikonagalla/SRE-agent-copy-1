@@ -1,10 +1,11 @@
+```python
 from uuid import UUID
 from typing import List
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 
-from dependencies import get_database
-from models import Book
+from .dependencies import get_database
+from .models import Book
 
 from pydantic import BaseModel, Field
 
@@ -85,3 +86,4 @@ def get_book_by_id(book_id: UUID, db: Session = Depends(get_database)):
     if not db_book:
         raise HTTPException(status_code=404, detail="Book not found")
     return db_book
+```

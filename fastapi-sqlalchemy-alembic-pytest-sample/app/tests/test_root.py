@@ -1,5 +1,6 @@
+```python
 from fastapi import status
-from .client import client
+from app.tests.client import client
 
 
 def test_root():
@@ -9,3 +10,4 @@ def test_root():
 
     json = response.json()
     assert json == {"ping": "pong"}
+```

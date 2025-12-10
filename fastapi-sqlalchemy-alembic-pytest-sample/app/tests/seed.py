@@ -1,4 +1,5 @@
-from models import Group, GroupItem, Item
+```python
+from app.models import Group, GroupItem, Item
 
 
 def datas_to_models(model, datas):
@@ -45,3 +46,4 @@ _group_items = [{
 groups = datas_to_models(Group, _groups)
 items = datas_to_models(Item, _items)
 group_items = datas_to_models(GroupItem, _group_items)
+```

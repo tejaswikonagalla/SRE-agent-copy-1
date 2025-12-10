@@ -1,6 +1,7 @@
+```python
 from fastapi import status
 
-from .client import client, temp_db
+from app.tests.client import client, temp_db
 
 
 @temp_db
@@ -21,3 +22,4 @@ def test_item():
 
     json = response.json()
     assert json["name"] == "Item3"
+```

@@ -1,3 +1,4 @@
+```python
 import os
 
 import alembic.config
@@ -7,7 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database, drop_database
 
-from .seed import items, groups, group_items
+from app.tests.seed import items, groups, group_items
 
 
 def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connection=None, revision="head"):
@@ -54,3 +55,4 @@ def SessionLocal():
 
     drop_database(test_sqlalchemy_database_url)
     engine.dispose()
+```

@@ -1,3 +1,5 @@
-from sqlalchemy.ext.declarative import declarative_base
+```python
+from sqlalchemy.orm import declarative_base
 
 ModelBase = declarative_base()
+```

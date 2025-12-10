@@ -1,5 +1,6 @@
+```python
 from typing import Generator
-from database import SessionLocal
+from .database import SessionLocal
 
 
 def get_database() -> Generator:
@@ -8,3 +9,4 @@ def get_database() -> Generator:
         yield db
     finally:
         db.close()
+```

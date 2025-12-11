@@ -1,8 +1,8 @@
 from fastapi import Header, HTTPException, status
 from fastapi.testclient import TestClient
 
-from dependencies import get_database
-from main import app
+from app.dependencies import get_database
+from app.main import app
 
 
 def temp_db(f):

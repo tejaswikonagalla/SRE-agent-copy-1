@@ -11,6 +11,8 @@ services:
     env_file:
       - docker/.env
     command: ["pytest", "-s"]
+    volumes:
+      - .:/app
   waitfordb:
     image: dadarek/wait-for-dependencies
     depends_on:
@@ -24,4 +26,4 @@ services:
     environment:
       TZ: UTC
     ports:
-      - 5432
+      - "5432:5432"

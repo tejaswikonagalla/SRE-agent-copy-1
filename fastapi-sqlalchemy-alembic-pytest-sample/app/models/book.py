@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Float
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
-from .model_base import ModelBase
+from app.models.model_base import ModelBase
 
 class Book(ModelBase):
     __tablename__ = "books"

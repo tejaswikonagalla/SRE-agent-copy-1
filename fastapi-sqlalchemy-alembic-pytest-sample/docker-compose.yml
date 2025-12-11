@@ -10,7 +10,7 @@ services:
       - waitfordb
     env_file:
       - docker/.env
-    command: ["pytest", "-s"]
+    command: ["alembic", "upgrade", "head", "&&", "pytest", "-s"]
     volumes:
       - .:/app
   waitfordb:

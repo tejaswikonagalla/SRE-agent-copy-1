@@ -8,6 +8,7 @@ def test_items():
     assert response.status_code == status.HTTP_200_OK
 
     json = response.json()
+    assert isinstance(json, list)  # Ensure the response is a list
     assert len(json) == 3
 
 @temp_db
@@ -18,4 +19,6 @@ def test_item():
     assert response.status_code == status.HTTP_200_OK
 
     json = response.json()
+    assert isinstance(json, dict)  # Ensure the response is a dictionary
+    assert "name" in json  # Ensure 'name' key exists
     assert json["name"] == "Item3"

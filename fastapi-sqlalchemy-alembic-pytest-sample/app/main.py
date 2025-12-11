@@ -1,5 +1,5 @@
 from uuid import UUID
-from typing import List
+from typing import List, Optional
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 
@@ -17,10 +17,10 @@ class BookCreate(BaseModel):
     price: float
 
 class BookUpdate(BaseModel):
-    name: str = None
-    author: str = None
-    genre: str = None
-    price: float = None
+    name: Optional[str] = None
+    author: Optional[str] = None
+    genre: Optional[str] = None
+    price: Optional[float] = None
 
 class BookOut(BaseModel):
     id: UUID
@@ -30,7 +30,7 @@ class BookOut(BaseModel):
     price: float
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 @app.post("/books", response_model=BookOut)
 def add_book(book: BookCreate, db: Session = Depends(get_database)):

@@ -26,4 +26,5 @@ def run_migrations():
         raise
 
 # Run migrations when the module is imported, not just when executed as a script
-run_migrations()
+if __name__ == '__main__':
+    run_migrations()

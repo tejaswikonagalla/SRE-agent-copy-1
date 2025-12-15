@@ -46,8 +46,8 @@ def test_group_items_1(db: Session):
     # Setup initial data
     try:
         db.execute(text(f"INSERT INTO groups (id, name, description) VALUES ('{group_id}', 'Group1', 'Group1 description')"))
-        db.execute(text(f"INSERT INTO items (name, group_id) VALUES ('Item1', '{group_id}')"))
-        db.execute(text(f"INSERT INTO items (name, group_id) VALUES ('Item2', '{group_id}')"))
+        db.execute(text(f"INSERT INTO items (id, name, group_id) VALUES ('1', 'Item1', '{group_id}')"))
+        db.execute(text(f"INSERT INTO items (id, name, group_id) VALUES ('2', 'Item2', '{group_id}')"))
         db.commit()
     except IntegrityError:
         db.rollback()
@@ -65,7 +65,7 @@ def test_group_items_2(db: Session):
     # Setup initial data
     try:
         db.execute(text(f"INSERT INTO groups (id, name, description) VALUES ('{group_id}', 'Group2', 'Group2 description')"))
-        db.execute(text(f"INSERT INTO items (name, group_id) VALUES ('Item3', '{group_id}')"))
+        db.execute(text(f"INSERT INTO items (id, name, group_id) VALUES ('3', 'Item3', '{group_id}')"))
         db.commit()
     except IntegrityError:
         db.rollback()

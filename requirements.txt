@@ -1,11 +1,11 @@
-fastapi
 PyGithub>=2.0.0
+gitpython>=3.1.0
+fastapi
+PyPDF2
+alembic
+psycopg2-binary
 requests>=2.25.0
 openai>=1.0.0
-e2b
 SQLAlchemy
-gitpython>=3.1.0
-alembic
+e2b
 python-dotenv>=1.0.0
-PyPDF2
-psycopg2-binary

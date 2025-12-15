@@ -19,13 +19,16 @@ services:
     image: dadarek/wait-for-dependencies
     depends_on:
       - db
-    command: db:5432 --timeout=60
+    command: db:5432 --timeout=60 --strict
   db:
     image: "postgres:13.1-alpine"
     container_name: "fastapi_pytest_db"
     env_file:
       - docker/.env
     environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test_db
       TZ: UTC
     ports:
       - "5432:5432"

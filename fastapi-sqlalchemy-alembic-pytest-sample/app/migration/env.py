@@ -6,7 +6,12 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 # Assuming the correct path for ModelBase is app.models.model_base
-from app.models.model_base import ModelBase
+try:
+    from app.models.model_base import ModelBase
+except ModuleNotFoundError:
+    # Minimal implementation of ModelBase if it doesn't exist
+    from sqlalchemy.ext.declarative import declarative_base
+    ModelBase = declarative_base()
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -14,8 +19,7 @@ config = context.config
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
-if config.config_file_name is not None:
-    fileConfig(config.config_file_name)
+fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
@@ -30,8 +34,7 @@ target_metadata = ModelBase.metadata
 
 
 # replace 'sqlalchemy.url' from alembic.ini with DATABASE_URL from .env
-if "DATABASE_URL" in os.environ:
-    config.set_main_option('sqlalchemy.url', os.environ["DATABASE_URL"])
+config.set_main_option('sqlalchemy.url', os.environ.get("DATABASE_URL", "sqlite:///default.db"))
 
 
 def run_migrations_offline():

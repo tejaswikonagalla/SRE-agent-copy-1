@@ -1,10 +1,10 @@
 from uuid import UUID
-from typing import List, Optional
+from typing import List
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 
-from .dependencies import get_database
-from .models import Book
+from app.dependencies import get_database
+from app.models import Book
 
 from pydantic import BaseModel, Field
 
@@ -17,10 +17,10 @@ class BookCreate(BaseModel):
     price: float
 
 class BookUpdate(BaseModel):
-    name: Optional[str] = None
-    author: Optional[str] = None
-    genre: Optional[str] = None
-    price: Optional[float] = None
+    name: str = None
+    author: str = None
+    genre: str = None
+    price: float = None
 
 class BookOut(BaseModel):
     id: UUID
@@ -30,7 +30,7 @@ class BookOut(BaseModel):
     price: float
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 @app.post("/books", response_model=BookOut)
 def add_book(book: BookCreate, db: Session = Depends(get_database)):

@@ -77,7 +77,17 @@ repo/
 
 ## Common Issues
 
-- **Migration failed**: Ensure your database is properly configured in `app/database.py`. Check the `alembic/env.py` file for correct database connection settings and ensure the `versions` directory contains migration scripts. If the directory is empty, generate a new migration using `alembic revision --autogenerate -m "Initial migration"`.
+- **Migration failed**: Ensure your database is properly configured in `app/database.py`. Check the `alembic/env.py` file for correct database connection settings and ensure the `versions` directory contains migration scripts. If the directory is empty, generate a new migration using:
+
+  ```bash
+  alembic revision --autogenerate -m "Initial migration"
+  ```
+
+  After generating the migration, apply it using:
+
+  ```bash
+  alembic upgrade head
+  ```
 
 - **ModuleNotFoundError**: Ensure all modules are correctly referenced in the imports. Check the `app` and `tests` directories for missing `__init__.py` files or incorrect import paths. Ensure all dependencies in `requirements.txt` are installed.
 

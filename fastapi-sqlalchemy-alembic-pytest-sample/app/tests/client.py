@@ -27,7 +27,7 @@ def temp_db(f):
 
         app.dependency_overrides[get_database] = override_get_db
         try:
-            f(*args, **kwargs)
+            return f(*args, **kwargs)
         finally:
             app.dependency_overrides[get_database] = get_database
 

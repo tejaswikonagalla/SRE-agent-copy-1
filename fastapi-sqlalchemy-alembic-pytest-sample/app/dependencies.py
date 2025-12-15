@@ -8,6 +8,6 @@ def get_database() -> Generator[Session, None, None]:
         yield db
     except Exception as e:
         db.rollback()
-        raise e
+        raise
     finally:
         db.close()

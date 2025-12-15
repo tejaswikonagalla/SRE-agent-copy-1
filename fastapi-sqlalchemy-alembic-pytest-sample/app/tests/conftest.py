@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database, drop_database
 
 from app.seed import items, groups, group_items
-import alembic.command  # Added this line to fix the ModuleNotFoundError
+import alembic.command
 
 def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connection=None, revision="head"):
     config = alembic.config.Config(alembic_ini_path)
@@ -20,7 +20,7 @@ def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connectio
 
 @pytest.fixture(scope="session", autouse=True)
 def SessionLocal():
-    test_sqlalchemy_database_url = os.environ['DATABASE_URL']
+    test_sqlalchemy_database_url = os.environ.get('DATABASE_URL', 'sqlite:///:memory:')
     engine = create_engine(test_sqlalchemy_database_url)
 
     if database_exists(test_sqlalchemy_database_url):

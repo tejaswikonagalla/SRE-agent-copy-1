@@ -1,5 +1,5 @@
 from fastapi import status
-from app.tests.utils import client, temp_db  # Adjusted import path
+from .utils import client, temp_db  # Adjusted import path
 
 @temp_db
 def test_group_items():

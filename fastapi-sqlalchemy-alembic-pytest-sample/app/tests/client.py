@@ -4,9 +4,9 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from ..dependencies import get_database
-from ..main import app
-from ..models import Base  # Assuming models.py contains SQLAlchemy models and Base
+from app.dependencies import get_database
+from app.main import app
+from app.models import Base  # Assuming models.py contains SQLAlchemy models and Base
 
 # Create an in-memory SQLite database for testing
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"

@@ -10,7 +10,7 @@ services:
       - waitfordb
     env_file:
       - docker/.env
-    command: /bin/sh -c "alembic upgrade head && pytest -s"
+    command: /bin/sh -c "PYTHONPATH=/app alembic upgrade head && PYTHONPATH=/app pytest -s"
     volumes:
       - .:/app
     environment:

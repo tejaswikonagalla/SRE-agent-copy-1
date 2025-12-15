@@ -1,4 +1,4 @@
-from app.models import Group, GroupItem, Item
+from ..models import Group, GroupItem, Item
 from sqlalchemy.orm import Session
 
 def datas_to_models(model, datas):

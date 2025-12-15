@@ -1,10 +1,7 @@
 from fastapi import status
-from app.tests.client import client, temp_db
-from app.models import Group, Item  # Ensure these imports are correct based on your repo structure
+from .client import client, temp_db  # Adjusted import path for client and temp_db
+from ..models import Group, Item  # Adjusted import path for Group and Item
 from sqlalchemy.orm import Session
-
-# Ensure the correct import path for client and temp_db
-# Assuming the correct path is app.tests.client
 
 @temp_db
 def test_groups(db: Session):

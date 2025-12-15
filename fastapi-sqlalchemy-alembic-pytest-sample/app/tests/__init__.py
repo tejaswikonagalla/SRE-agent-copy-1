@@ -3,7 +3,7 @@ import os
 import sys
 
 # Add the app directory to the sys.path to ensure modules can be found
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'app')))
 
 # Import test modules if they exist
 try:

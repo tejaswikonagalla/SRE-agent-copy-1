@@ -10,9 +10,11 @@ services:
       - waitfordb
     env_file:
       - docker/.env
-    command: ["alembic", "upgrade", "head", "&&", "pytest", "-s"]
+    command: ["pytest", "-s"]
     volumes:
       - .:/app
+    environment:
+      PYTHONPATH: /app  # Ensure the app directory is in the Python path
   waitfordb:
     image: dadarek/wait-for-dependencies
     depends_on:

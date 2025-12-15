@@ -19,5 +19,5 @@ from . import routes
 from .database import engine
 from .models import Base
 
-# Create all tables in the database
+# Create all tables in the database if they do not exist
 Base.metadata.create_all(bind=engine)

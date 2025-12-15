@@ -1,5 +1,5 @@
 from app.models import Group, GroupItem, Item
-
+from sqlalchemy.orm import Session
 
 def datas_to_models(model, datas):
     models = list()
@@ -42,6 +42,12 @@ _group_items = [{
     "item_id": _items[2]["id"]
 }]
 
-groups = datas_to_models(Group, _groups)
-items = datas_to_models(Item, _items)
-group_items = datas_to_models(GroupItem, _group_items)
+def seed_database(session: Session):
+    groups = datas_to_models(Group, _groups)
+    items = datas_to_models(Item, _items)
+    group_items = datas_to_models(GroupItem, _group_items)
+
+    session.add_all(groups)
+    session.add_all(items)
+    session.add_all(group_items)
+    session.commit()

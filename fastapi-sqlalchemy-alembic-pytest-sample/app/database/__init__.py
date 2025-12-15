@@ -10,4 +10,5 @@ Base = declarative_base()
 
 def init_db():
     import app.models  # Ensure all models are imported for Alembic to detect
+    # Ensure all tables are created
     Base.metadata.create_all(bind=engine)

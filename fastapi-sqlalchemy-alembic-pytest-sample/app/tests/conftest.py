@@ -32,6 +32,7 @@ def SessionLocal():
         migrate_in_memory("app/migrations", 'alembic.ini', connection)
 
     Base = declarative_base()
+    Base.metadata.bind = engine
     Base.metadata.create_all(engine)
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

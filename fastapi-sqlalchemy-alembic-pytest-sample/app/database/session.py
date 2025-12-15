@@ -15,7 +15,8 @@ if SQLALCHEMY_DATABASE_URL.startswith("sqlite://"):
 else:
     connect_args = {}
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True, connect_args=connect_args)
+# Ensure the connect_args is only used for SQLite databases
+engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True, connect_args=connect_args if SQLALCHEMY_DATABASE_URL.startswith("sqlite://") else None)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()

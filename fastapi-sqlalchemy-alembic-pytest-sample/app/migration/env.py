@@ -8,7 +8,7 @@ from sqlalchemy import pool
 # Assuming the correct path for ModelBase is app.models.model_base
 try:
     from app.models.model_base import ModelBase
-except ModuleNotFoundError:
+except ImportError:
     # Minimal implementation of ModelBase if it doesn't exist
     from sqlalchemy.ext.declarative import declarative_base
     ModelBase = declarative_base()

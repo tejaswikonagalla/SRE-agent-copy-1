@@ -16,9 +16,12 @@ from alembic.operations import Operations
 # Ensure that the migration environment is set up correctly
 def run_migrations():
     connectable = engine.connect()
-    with connectable.begin() as connection:
-        context.configure(connection=connection, target_metadata=Base.metadata)
-        with context.begin_transaction():
-            context.run_migrations()
+    try:
+        with connectable.begin() as connection:
+            context.configure(connection=connection, target_metadata=Base.metadata)
+            with context.begin_transaction():
+                context.run_migrations()
+    finally:
+        connectable.close()
 
 # If these modules don't exist, they should be created with minimal implementation.

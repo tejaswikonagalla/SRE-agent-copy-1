@@ -9,5 +9,5 @@ class Book(ModelBase):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, unique=True, nullable=False)
     name = Column(String, nullable=False)
     author = Column(String, nullable=False)
-    genre = Column(String, nullable=True)  # Allow genre to be nullable to prevent migration issues
+    genre = Column(String, nullable=True)
     price = Column(Float, nullable=False)

@@ -1,4 +1,5 @@
 from fastapi import status
+from fastapi.testclient import TestClient
 from .client import client, temp_db  # Adjusted import path for client and temp_db
 from ..models import Group, Item  # Adjusted import path for Group and Item
 from sqlalchemy.orm import Session

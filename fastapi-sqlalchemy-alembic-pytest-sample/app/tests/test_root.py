@@ -3,6 +3,7 @@ from app.tests.client import client
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.database import Base
+from app.main import app  # Ensure the app is imported to initialize routes
 
 # Assuming the database URL is defined somewhere in the app
 DATABASE_URL = "sqlite:///./test.db"
@@ -17,9 +18,10 @@ Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine)
 
 def test_root():
-    response = client.get("/")
+    with app.test_client() as client:  # Ensure the client is used within the app context
+        response = client.get("/")
 
-    assert response.status_code == status.HTTP_200_OK
+        assert response.status_code == status.HTTP_200_OK
 
-    json = response.json()
-    assert json == {"ping": "pong"}
+        json = response.json()
+        assert json == {"ping": "pong"}

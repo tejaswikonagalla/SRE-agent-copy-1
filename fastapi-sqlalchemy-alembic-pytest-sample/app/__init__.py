@@ -28,4 +28,9 @@ Base.metadata.create_all(bind=engine)
 
 # Apply migrations using Alembic
 alembic_cfg = Config(os.path.join(os.path.dirname(__file__), 'alembic.ini'))
-command.upgrade(alembic_cfg, 'head')
+
+# Ensure the alembic.ini file exists and is correctly configured
+if os.path.exists(alembic_cfg.config_file_name):
+    command.upgrade(alembic_cfg, 'head')
+else:
+    raise FileNotFoundError("alembic.ini file not found. Ensure it exists in the app directory.")

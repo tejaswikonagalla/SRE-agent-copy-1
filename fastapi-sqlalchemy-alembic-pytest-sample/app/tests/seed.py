@@ -1,4 +1,4 @@
-from ..models import Group, GroupItem, Item
+from app.models import Group, GroupItem, Item
 
 
 def datas_to_models(model, datas):

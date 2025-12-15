@@ -29,7 +29,7 @@ def SessionLocal():
     create_database(test_sqlalchemy_database_url)
 
     with engine.begin() as connection:
-        migrate_in_memory("migration", 'alembic.ini', connection)
+        migrate_in_memory("app/migrations", 'alembic.ini', connection)
 
     Base = declarative_base()
     Base.metadata.create_all(engine)

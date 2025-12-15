@@ -23,10 +23,10 @@ def SessionLocal():
     test_sqlalchemy_database_url = os.environ['DATABASE_URL']
     engine = create_engine(test_sqlalchemy_database_url)
 
-    if database_exists(test_sqlalchemy_database_url):
-        drop_database(test_sqlalchemy_database_url)
+    if database_exists(engine.url):
+        drop_database(engine.url)
 
-    create_database(test_sqlalchemy_database_url)
+    create_database(engine.url)
 
     with engine.begin() as connection:
         migrate_in_memory("migration", 'alembic.ini', connection)
@@ -52,5 +52,5 @@ def SessionLocal():
 
     yield SessionLocal
 
-    drop_database(test_sqlalchemy_database_url)
+    drop_database(engine.url)
     engine.dispose()

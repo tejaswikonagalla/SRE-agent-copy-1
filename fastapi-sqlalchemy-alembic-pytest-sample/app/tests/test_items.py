@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from alembic import command
 from alembic.config import Config
 import os
+import httpx
 
 # Ensure the database is migrated before running tests
 def setup_module(module):

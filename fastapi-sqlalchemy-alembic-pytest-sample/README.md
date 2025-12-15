@@ -49,6 +49,18 @@ repo/
 
 3. **Install dependencies:**
 
+   Ensure `requests` is included in `requirements.txt`:
+
+   ```plaintext
+   fastapi
+   sqlalchemy
+   alembic
+   pytest
+   requests
+   ```
+
+   Then install the dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```

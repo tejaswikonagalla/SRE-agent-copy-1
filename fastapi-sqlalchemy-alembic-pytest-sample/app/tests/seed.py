@@ -43,11 +43,11 @@ _group_items = [{
 }]
 
 def seed_database(session: Session):
-    items = datas_to_models(Item, _items)
     groups = datas_to_models(Group, _groups)
+    items = datas_to_models(Item, _items)
     group_items = datas_to_models(GroupItem, _group_items)
 
-    session.add_all(items)
     session.add_all(groups)
+    session.add_all(items)
     session.add_all(group_items)
     session.commit()

@@ -2,11 +2,15 @@ from fastapi import status
 from app.client import client, temp_db
 from app.database import Base, engine
 from sqlalchemy.orm import sessionmaker
+from alembic import command
+from alembic.config import Config
+import os
 
 # Ensure the database is migrated before running tests
 def setup_module(module):
-    # Create tables in the database
-    Base.metadata.create_all(bind=engine)
+    # Run Alembic migrations
+    alembic_cfg = Config(os.path.join(os.path.dirname(__file__), '../alembic.ini'))
+    command.upgrade(alembic_cfg, "head")
 
 @temp_db
 def test_items():

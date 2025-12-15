@@ -25,5 +25,5 @@ def test_group_item():
 
         json = response.json()
         assert isinstance(json, dict)  # Ensure the response is a dictionary
-        assert json["group_id"] == "7d60e1d4-a6af-fc52-6355-67c3094479ab"
-        assert json["item_id"] == "9ab921a1-d177-7691-0bb4-b66ef823d9b4"
+        assert json.get("group_id") == "7d60e1d4-a6af-fc52-6355-67c3094479ab"
+        assert json.get("item_id") == "9ab921a1-d177-7691-0bb4-b66ef823d9b4"

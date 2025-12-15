@@ -9,6 +9,6 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 def init_db():
-    from app.database import models  # Ensure all models are imported for Alembic to detect
+    import app.database.models  # Ensure all models are imported for Alembic to detect
     # Ensure all tables are created
     Base.metadata.create_all(bind=engine)

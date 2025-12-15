@@ -1,5 +1,5 @@
 from fastapi import status
-from app.tests.client import client
+from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.database import Base
@@ -17,11 +17,12 @@ Base.metadata.drop_all(bind=engine)
 # Create all tables in the test database
 Base.metadata.create_all(bind=engine)
 
+client = TestClient(app)  # Use TestClient from fastapi.testclient
+
 def test_root():
-    with app.test_client() as client:  # Ensure the client is used within the app context
-        response = client.get("/")
+    response = client.get("/")
 
-        assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == status.HTTP_200_OK
 
-        json = response.json()
-        assert json == {"ping": "pong"}
+    json = response.json()
+    assert json == {"ping": "pong"}

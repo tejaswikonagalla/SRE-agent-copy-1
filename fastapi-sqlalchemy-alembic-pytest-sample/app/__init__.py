@@ -31,6 +31,9 @@ alembic_cfg = Config(os.path.join(os.path.dirname(__file__), 'alembic.ini'))
 
 # Ensure the alembic.ini file exists and is correctly configured
 if os.path.exists(alembic_cfg.config_file_name):
-    command.upgrade(alembic_cfg, 'head')
+    try:
+        command.upgrade(alembic_cfg, 'head')
+    except Exception as e:
+        raise RuntimeError(f"Migration failed: {e}")
 else:
     raise FileNotFoundError("alembic.ini file not found. Ensure it exists in the app directory.")

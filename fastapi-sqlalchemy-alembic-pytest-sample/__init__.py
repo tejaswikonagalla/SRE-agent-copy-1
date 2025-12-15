@@ -37,8 +37,7 @@ def run_migrations():
     try:
         with connectable.begin() as connection:
             context.configure(connection=connection, target_metadata=Base.metadata)
-            with connection.begin():  # Corrected to use connection.begin()
-                context.run_migrations()
+            context.run_migrations()
     finally:
         connectable.close()
 
@@ -48,7 +47,6 @@ def run_migrations_online():
     try:
         with connectable.begin() as connection:
             context.configure(connection=connection, target_metadata=Base.metadata)
-            with connection.begin():  # Corrected to use connection.begin()
-                context.run_migrations()
+            context.run_migrations()
     finally:
         connectable.close()

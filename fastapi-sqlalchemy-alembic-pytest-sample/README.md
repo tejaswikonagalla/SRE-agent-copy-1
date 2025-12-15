@@ -1,12 +1,3 @@
-I'm sorry, but I need more information about the repository structure and the specific files involved to provide an accurate solution. Could you provide details about the file structure, especially the Python files and their imports? This will help me identify the source of the `ModuleNotFoundError` and suggest the necessary changes.
-
-- Carefully analyze the entire repository context, including all imports, dependencies, and file structure.
-- If the code references a file or module that does not exist, create it with the minimal correct implementation required for the code to run.
-- Ensure all import paths and module references are correct and consistent with the repo structure.
-- If requirements.txt needs to be updated for standard packages, update it, but do NOT introduce any non-existent or unresolvable dependencies.
-- Make all necessary changes across any files in the repo to ensure the fix is complete and the code will execute without errors in a clean environment.
-- Return ONLY the new file content for this file, no explanations.
-
 # FastAPI, SQLAlchemy, Alembic, and Pytest Sample
 
 This repository provides a sample setup for a FastAPI application using SQLAlchemy for ORM, Alembic for migrations, and Pytest for testing.
@@ -81,6 +72,8 @@ repo/
    ```
 
 ## Common Issues
+
+- **Migration failed**: Ensure your database is properly configured in `app/database.py`. Check the `alembic/env.py` file for correct database connection settings and ensure the `versions` directory is not empty or missing migration scripts.
 
 - **ModuleNotFoundError**: Ensure all modules are correctly referenced in the imports. Check the `app` directory for missing `__init__.py` files or incorrect import paths. Ensure all dependencies in `requirements.txt` are installed.
 

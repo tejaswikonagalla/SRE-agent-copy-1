@@ -18,11 +18,12 @@ from alembic import command
 from alembic.config import Config
 
 def run_migrations():
-    alembic_cfg = Config(os.path.join(os.path.dirname(__file__), '..', 'alembic.ini'))
+    alembic_cfg = Config(os.path.join(os.path.dirname(__file__), '..', '..', 'alembic.ini'))
     try:
         command.upgrade(alembic_cfg, 'head')
     except Exception as e:
         print(f"Migration failed: {e}")
         raise
 
-run_migrations()
+if __name__ == "__main__":
+    run_migrations()

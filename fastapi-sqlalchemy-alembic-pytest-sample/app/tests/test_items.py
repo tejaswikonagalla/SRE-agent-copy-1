@@ -1,5 +1,12 @@
 from fastapi import status
 from app.client import client, temp_db
+from app.database import Base, engine
+from sqlalchemy.orm import sessionmaker
+
+# Ensure the database is migrated before running tests
+def setup_module(module):
+    # Create tables in the database
+    Base.metadata.create_all(bind=engine)
 
 @temp_db
 def test_items():

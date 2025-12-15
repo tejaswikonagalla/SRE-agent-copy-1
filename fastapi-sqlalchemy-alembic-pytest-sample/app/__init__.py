@@ -19,5 +19,13 @@ from . import routes
 from .database import engine
 from .models import Base
 
+# Import alembic to handle migrations
+from alembic.config import Config
+from alembic import command
+
 # Create all tables in the database if they do not exist
 Base.metadata.create_all(bind=engine)
+
+# Apply migrations using Alembic
+alembic_cfg = Config(os.path.join(os.path.dirname(__file__), 'alembic.ini'))
+command.upgrade(alembic_cfg, 'head')

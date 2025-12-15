@@ -11,6 +11,8 @@ DATABASE_URL = "sqlite:///./test.db"
 engine = create_engine(DATABASE_URL)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Drop all tables in the test database to ensure a clean state
+Base.metadata.drop_all(bind=engine)
 # Create all tables in the test database
 Base.metadata.create_all(bind=engine)
 

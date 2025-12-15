@@ -19,7 +19,7 @@ services:
     image: dadarek/wait-for-dependencies
     depends_on:
       - db
-    command: db:5432
+    command: db:5432 --timeout=60
   db:
     image: "postgres:13.1-alpine"
     container_name: "fastapi_pytest_db"

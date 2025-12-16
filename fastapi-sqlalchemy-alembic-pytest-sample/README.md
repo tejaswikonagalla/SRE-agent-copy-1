@@ -56,7 +56,6 @@ repo/
    sqlalchemy
    alembic
    pytest
-   requests
    ```
 
    Then install the dependencies:

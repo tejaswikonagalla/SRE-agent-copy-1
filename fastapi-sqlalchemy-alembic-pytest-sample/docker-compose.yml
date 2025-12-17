@@ -10,7 +10,7 @@ services:
       - waitfordb
     env_file:
       - docker/.env
-    command: /bin/sh -c "pip install -r requirements.txt && alembic upgrade head && pytest -s"
+    command: /bin/sh -c "pip install -r requirements.txt && pip install requests && alembic upgrade head && pytest -s"
     volumes:
       - .:/app
     environment:

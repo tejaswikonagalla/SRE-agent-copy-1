@@ -10,5 +10,4 @@ def get_database() -> Generator[Session, None, None]:
         db.rollback()
         raise
     finally:
-        db.commit()  # Ensure any pending transactions are committed
-        db.close()
+        db.close()  # Ensure the session is closed
